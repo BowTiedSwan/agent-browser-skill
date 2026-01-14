@@ -256,6 +256,22 @@
         height: 18px;
         display: inline-block;
       }
+      
+      /* Typing Cursor */
+      .cursor {
+        display: inline-block;
+        width: 0.5em;
+        height: 1em;
+        background-color: currentColor;
+        margin-left: 0.1em;
+        vertical-align: -0.1em;
+        animation: blink 1s step-end infinite;
+      }
+      
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
 
       @media (max-width: 860px) {
         .hero h2,
@@ -288,7 +304,7 @@
       </div>
 
       <section class="frame hero">
-        <h2>Web automation for Claude Code.</h2>
+        <h2>Web automation for <span id="dynamic-text">Claude Code</span><span class="cursor"></span></h2>
         <p>
           Agent Browser gives Claude the power to browse, snapshot, and interact with the live web using a headless browser.
         </p>
@@ -401,6 +417,45 @@
             }
           });
         }
+        
+        // Dynamic Typing Logic
+        const words = ["Claude Code", "Opencode", "Codex", "Aider", "Gemini"];
+        let wordIndex = 0;
+        let charIndex = words[0].length;
+        let isDeleting = false;
+        const typeSpeed = 100;
+        const deleteSpeed = 50;
+        const pauseTime = 2000;
+        
+        const target = document.getElementById('dynamic-text');
+        
+        function type() {
+          const currentWord = words[wordIndex];
+          
+          if (isDeleting) {
+            target.textContent = currentWord.substring(0, charIndex - 1);
+            charIndex--;
+          } else {
+            target.textContent = currentWord.substring(0, charIndex + 1);
+            charIndex++;
+          }
+
+          let nextSpeed = isDeleting ? deleteSpeed : typeSpeed;
+
+          if (!isDeleting && charIndex === currentWord.length) {
+            nextSpeed = pauseTime;
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+            nextSpeed = 500;
+          }
+
+          setTimeout(type, nextSpeed);
+        }
+
+        // Start the loop
+        setTimeout(type, pauseTime);
       })();
     </script>
   </body>
