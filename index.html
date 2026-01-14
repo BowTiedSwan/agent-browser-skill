@@ -260,7 +260,7 @@
       /* Typing Cursor */
       .cursor {
         display: inline-block;
-        width: 0.5em;
+        width: 0.3em;
         height: 1em;
         background-color: currentColor;
         margin-left: 0.1em;
@@ -423,9 +423,6 @@
         let wordIndex = 0;
         let charIndex = words[0].length;
         let isDeleting = false;
-        const typeSpeed = 100;
-        const deleteSpeed = 50;
-        const pauseTime = 2000;
         
         const target = document.getElementById('dynamic-text');
         
@@ -440,22 +437,23 @@
             charIndex++;
           }
 
-          let nextSpeed = isDeleting ? deleteSpeed : typeSpeed;
+          let typeSpeed = isDeleting ? 50 : 100;
 
           if (!isDeleting && charIndex === currentWord.length) {
-            nextSpeed = pauseTime;
+            typeSpeed = 2000;
             isDeleting = true;
           } else if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            nextSpeed = 500;
+            typeSpeed = 500;
           }
 
-          setTimeout(type, nextSpeed);
+          setTimeout(type, typeSpeed);
         }
 
         // Start the loop
-        setTimeout(type, pauseTime);
+        isDeleting = true;
+        setTimeout(type, 2000);
       })();
     </script>
   </body>
