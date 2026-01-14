@@ -6,9 +6,7 @@ A Claude Code skill wrapper for [agent-browser](https://github.com/vercel-labs/a
 
 ```bash
 # Clone this repo and run install
-git clone https://github.com/your-username/agent-browser-skill.git
-cd agent-browser-skill
-./install.sh
+curl -fsSL https://raw.githubusercontent.com/BowTiedSwan/agent-browser-skill/main/install.sh | bash
 ```
 
 ## 🚀 Usage

@@ -2,7 +2,7 @@
 
 set -e
 
-REPO_BASE="https://raw.githubusercontent.com/promethus/agent-browser-skill/main" # Placeholder URL, will need to be updated with actual user/repo
+REPO_BASE="https://raw.githubusercontent.com/BowTiedSwan/agent-browser-skill/main"
 CLAUDE_DIR="$HOME/.claude/skills"
 SKILL_DIR="$CLAUDE_DIR/agent-browser"
 
