@@ -23,3 +23,8 @@ This skill wraps the `agent-browser` CLI tool. It allows Claude to:
 1.  **Open** URLs in a headless Chromium instance.
 2.  **Snapshot** the page to get an accessibility tree with unique references (`@e1`, `@e2`).
 3.  **Interact** with elements using these references (click, fill, hover).
+
+## 📜 Credits
+
+- **Original Tool**: [agent-browser](https://github.com/vercel-labs/agent-browser) by [Vercel](https://vercel.com) and [Chris Tate](https://x.com/ctatedev).
+- **Skill Wrapper**: [Bowtiedswan](https://x.com/Bowtiedswan).
